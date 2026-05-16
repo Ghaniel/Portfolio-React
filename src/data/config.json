@@ -1,34 +1,117 @@
 {
   "job": "Frontend Developer",
-  "name": "John Doe",
-  "desc": "The traveler of this path, a web designer in Turkey.",
-  "aboutDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  "email": "john.doe@example.com",
+  "name": "Ghaniel Ni'Hat Faturahman",
+  "desc": "A student of Wikrama Vocational Highschool, gamer and music lover",
+  "aboutDesc": "Saya adalah orang yang bisa beradaptasi dengan situasi apapun, saya senang menjelajahi hal yang baru dan mencari ide-ide baru, selalu belajar dari kesalahan sebelumnya.",
+  "email": "ghanielnf@gmail.com",
   "status": "on",
-  "hireMeLink": "https://twitter.com/iamkaanayyildiz",
+  "hireMeLink": "https://mail.google.com/mail/?view=cm&fs=1&to=ghanielnf@gmail.com",
   "projects": [
     {
-      "project-image-url": "https://github.com/kaanayyildiz/benfolio/assets/39806458/9d826c30-0135-4620-8e0f-bc3460848e5e",
-      "project-name": "Benfolio",
-      "project-desc": "React + Tailwind Portfolio"
+      "project-image-url": "/projects/project-1.png",
+      "project-name": "Organisasi",
+      "project-desc": "Laravel + Bootstrap",
+      "project-link": "https://github.com/Ghaniel/Organisasi.git"
+    },
+    {
+      "project-image-url": "/projects/project-2.png",
+      "project-name": "Portfolio Website",
+      "project-desc": "React + Tailwind",
+      "project-link": "https://github.com/Ghaniel/Portfolio.git"
+    },
+    {
+      "project-image-url": "/projects/project-3.png",
+      "project-name": "GLOW.",
+      "project-desc": "React + Tailwind"
     }
+  ],
+  "allProjects": [
+    {
+      "project-image-url": "/projects/project-1.png",
+      "project-name": "Organisasi",
+      "project-desc": "Laravel + Bootstrap",
+      "project-link": "https://github.com/Ghaniel/Organisasi.git"
+    },
+    {
+      "project-image-url": "/projects/project-2.png",
+      "project-name": "Portfolio Website",
+      "project-desc": "React + Tailwind",
+      "project-link": "https://github.com/Ghaniel/Portfolio.git"
+    },
+    {
+      "project-image-url": "/projects/project-3.png",
+      "project-name": "GLOW.",
+      "project-desc": "React + Tailwind"
+    },
+    {
+      "project-image-url": "/projects/project-4.png",
+      "project-name": "Organisasi",
+      "project-desc": "Figma"
+    },
+    {
+      "project-image-url": "/projects/project-5.png",
+      "project-name": "Banner",
+      "project-desc": "Figma"
+    },
+    {
+      "project-image-url": "/projects/project-6.png",
+      "project-name": "Layering",
+      "project-desc": "Figma"
+    }
+  ],
+  "certificates": [
+  {
+    "title": "Sertifikat K3",
+    "issuedBy": "International Labour Organization",
+    "image": "/certificates/Sertifikat K3.png"
+  },
+  {
+    "title": "Sertifikat Belajar Pemrograman Dasar Web",
+    "issuedBy": "Dicoding",
+    "image": "/certificates/Sertifikat Belajar Pemrograman Dasar Web.png"
+  },
+  {
+    "title": "Sertifikat Pemrograman Dasar JavaScript",
+    "issuedBy": "Dicoding",
+    "image": "/certificates/Sertifikat Pemrograman Dasar JavaScript.png"
+  },
+  {
+    "title": "Sertifikat Introduction to Financial Literacy",
+    "issuedBy": "Dicoding",
+    "image": "/certificates/Sertifikat Introduction to Financial Literacy.png"
+  },
+  {
+    "title": "Sertifikat UX Writing Introduction",
+    "issuedBy": "MySkill",
+    "image": "/certificates/Sertifikat UX Writing Introduction.png"
+  },
+  {
+    "title": "Sertifikat Wordpress Introduction",
+    "issuedBy": "MySkill",
+    "image": "/certificates/Sertifikat Wordpress Introduction.png"
+  },
+  {
+    "title": "Sertifikat Data Analysis Fundamental",
+    "issuedBy": "MySkill",
+    "image": "/certificates/Sertifikat Data Analysis Fundamental.png"
+  }
   ],
   "social": [
     {
-      "icon": "FaXTwitter",
-      "link": "https://x.com"
+      "icon": "FaWhatsapp",
+      "link": "https://wa.me/6285694154629"
     },
     {
       "icon": "FaInstagram",
-      "link": "https://instagram.com"
+      "link": "https://www.instagram.com/ghanieln"
     },
     {
       "icon": "FaGithub",
-      "link": "https://github.com"
+      "link": "https://github.com/Ghaniel"
     },
     {
       "icon": "FaLinkedinIn",
-      "link": "https://linkedin.com"
+      "link": "https://www.linkedin.com/in/ghaniel-ni-hat-faturahman-bbbb6137b"
     }
   ]
 }

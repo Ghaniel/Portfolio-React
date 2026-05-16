@@ -1,18 +1,18 @@
 import React from "react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getConfigData } from "../data/configReader";
-
 
 function CopyEmailButton() {
   const [buttonText, setButtonText] = useState("Copy Email");
-  
   const configData = getConfigData();
 
   const copyToClipboard = () => {
-    const email = configData.email; // Kopyalanacak e-posta adresi
+    const email = configData.email;
     navigator.clipboard.writeText(email)
       .then(() => {
-        setButtonText('Copied');
+        setButtonText('Copied!');
+        // Kembalikan teks setelah 2 detik
+        setTimeout(() => setButtonText("Copy Email"), 2000);
       })
       .catch((err) => {
         console.error('Copy error:', err);
@@ -22,15 +22,17 @@ function CopyEmailButton() {
   return (
     <button
       onClick={copyToClipboard}
-      className="gap-x-1 bg-white focus:ring-2 focus:ring-gray-300 font-medium border rounded-lg border-gray-200 first-letter:rounded-lg text-sm px-1.5 py-1.5 text-center inline-flex items-center mr-2 mb-2"
+      className="gap-x-2 font-bold border-2 rounded-2xl text-sm px-5 py-3 text-center inline-flex items-center transition-all duration-500 shadow-sm active:scale-95
+                 bg-white text-black border-gray-200 
+                 dark:bg-neutral-800 dark:text-white dark:border-neutral-700"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth="1.5"
+        strokeWidth="2.5"
         stroke="currentColor"
-        className="w-6 h-6"
+        className={`w-5 h-5 ${buttonText === 'Copied!' ? 'text-green-500' : 'text-inherit'}`}
       >
         <path
           strokeLinecap="round"

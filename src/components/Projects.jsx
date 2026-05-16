@@ -1,101 +1,102 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { getConfigData } from "../data/configReader";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 },
+  }),
+};
 
 export default function Card() {
   const configData = getConfigData();
   const projects = configData.projects;
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const svgClass = isHovered
-    ? "w-6 h-6 text-gray-500 transition delay-150"
-    : "w-6 h-6 text-gray-300";
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <>
-      <div className="px-2">
-        <div className="flex flex-col bg-gray-100 rounded-lg px-5 py-5 ">
-          <div className="flex items-center justify-between mb-5">
-            <div className="font-medium text-lg flex items-center gap-x-2">
-              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-              Projects
-            </div>
+    <div className="px-2">
+      <div className="flex flex-col bg-slate-100 dark:bg-white rounded-3xl px-6 py-10 shadow-sm border border-slate-200 dark:border-gray-300 transition-all duration-500">
+
+        {/* HEADER */}
+        <motion.div
+          className="flex items-center justify-between mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="font-black text-3xl flex items-center gap-x-4 !text-black tracking-tighter">
+            <div className="w-2.5 h-8 bg-blue-600 rounded-full"></div>
+            Semua Project
+          </div>
+          <Link to="/projects">
             <button
               type="button"
-              className="gap-x-2 text-gray-900 bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+              className="group gap-x-2 bg-black text-white hover:scale-105 active:scale-95 transition-all duration-300 font-bold rounded-2xl text-sm px-6 py-3 inline-flex items-center shadow-xl"
             >
               View All
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-3 h-3"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </button>
-          </div>
-          <div className="flex flex-col">
-            {projects.map((project, index) => (
-              <a
-                key={index}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="drop-shadow-md card bg-white rounded-lg px-5 py-3 gap-x-3 flex flex-col md:flex-none md:flex-row hover:-translate-y-1 hover:scale-100 duration-300 transition ease-in-out delay-150 hover:shadow-sm border border-gray-200 hover:border-gray-300"
-                href=""
-              >
-                <div className="rounded-full overflow-hidden flex items-center justify-center border border-gray-200 hidden md:block">
-                  <div className="card-image w-16 h-16 rounded-full overflow-hidden">
-                    <img
-                      className="w-full h-full object-cover"
-                      src={project["project-image-url"]}
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h1 className="font-medium text-lg">
+          </Link>
+        </motion.div>
+
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.a
+              key={index}
+              href={project["project-link"]}
+              target="_blank"
+              rel="noreferrer"
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group flex flex-col bg-white dark:bg-neutral-800 rounded-3xl p-4 border border-gray-200 dark:border-neutral-700 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 ease-out"
+            >
+              {/* IMAGE */}
+              <div className="relative w-full h-52 mb-5 rounded-2xl overflow-hidden bg-gray-100 dark:bg-neutral-900">
+                <img
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={project["project-image-url"]}
+                  alt={project["project-name"]}
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"></div>
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex flex-col px-2 pb-2">
+                <div className="flex items-center justify-between mb-3">
+                  <h1 className="font-extrabold text-xl text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {project["project-name"]}
                   </h1>
-                  <p className="text-gray-500 text-md">
-                    {project["project-desc"]}
-                  </p>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${
+                    hoveredIndex === index
+                      ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                      : "bg-gray-100 dark:bg-neutral-700 text-gray-500 dark:text-gray-400"
+                  }`}>
+                    <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
                 </div>
-                <button className="ml-auto hidden md:inline-block">
-                  <svg
-                    className={svgClass}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </button>
-              </a>
-            ))}
-          </div>
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-medium leading-relaxed line-clamp-2">
+                  {project["project-desc"]}
+                </p>
+              </div>
+            </motion.a>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
