@@ -22,7 +22,8 @@
     {
       "project-image-url": "/projects/project-3.png",
       "project-name": "GLOW.",
-      "project-desc": "React + Tailwind"
+      "project-desc": "React + Tailwind",
+      "project-link": "https://github.com/Ghaniel/GLOW..git"
     }
   ],
   "allProjects": [
@@ -37,6 +38,12 @@
       "project-name": "Portfolio Website",
       "project-desc": "React + Tailwind",
       "project-link": "https://github.com/Ghaniel/Portfolio.git"
+    },
+    {
+      "project-image-url": "/projects/project-3.png",
+      "project-name": "GLOW.",
+      "project-desc": "React + Tailwind",
+      "project-link": "https://github.com/Ghaniel/GLOW..git"
     },
     {
       "project-image-url": "/projects/project-3.png",

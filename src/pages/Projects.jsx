@@ -38,7 +38,7 @@ export default function AllProjectsPage() {
         {allProjects.map((project, index) => (
           <motion.a
             key={project.id || index}
-            href={project["project-link"] || "#"}
+            href={project["project-link"]}
             target="_blank"
             rel="noopener noreferrer"
             custom={index}
